@@ -6,14 +6,15 @@
 
 class Solution(object):
     def getIntersectionNode(self, headA, headB):
-        a,b = headA , headB
-        while(a!=b):
+        a = headA
+        b = headB
+        while (a!=b):
+            a = a.next
+            b = b.next
+            if (a == b):
+                return a
             if (a == None):
                 a = headB
-            else:
-                a = a.next
             if (b == None):
                 b = headA
-            else:
-                b= b.next
         return a
