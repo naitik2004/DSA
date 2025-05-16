@@ -1,7 +1,4 @@
 class Solution(object):
-    ans = []
-    result = []
-    i = 0
     def add_sub(self,nums,ans,result,i):
         if i == len(nums):
             result.append(ans)
