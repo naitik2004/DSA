@@ -1,16 +1,24 @@
 class Solution:
     def countDistinctIntegers(self, nums: List[int]) -> int:
-        a = []
-        for num in nums:
-            sign = -1 if num < 0 else 1
-            n = abs(num)
-            reversed_num = 0
+        # a = []
+        # for num in nums:
+        #     sign = -1 if num < 0 else 1
+        #     n = abs(num)
+        #     reversed_num = 0
             
-            while n != 0:
-                last_digit = n % 10
-                reversed_num = reversed_num * 10 + last_digit
-                n //= 10
+        #     while n != 0:
+        #         last_digit = n % 10
+        #         reversed_num = reversed_num * 10 + last_digit
+        #         n //= 10
             
-            a.append(sign * reversed_num)
-        d = a + nums
-        return(len(set(d)))
+        #     a.append(sign * reversed_num)
+        # d = a + nums
+        # return(len(set(d)))
+
+
+        arr = nums[::]
+        for x in nums:
+            if x > 9:
+                arr.append(int(str(x)[::-1]))
+        return(len(set(arr)))
+
