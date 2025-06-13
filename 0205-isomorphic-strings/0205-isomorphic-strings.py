@@ -4,16 +4,20 @@ class Solution:
         used = set()
 
         for i in range(len(s)):
-            if s[i] not in a:
-                if t[i] not in used:
-                    a[s[i]] = t[i]
-                    used.add(t[i])
+            if s[i] in a:
+                if a[s[i]] != t[i]:
+                    return False
+            else:
+                if t[i] in used:
+                    return False
+                a[s[i]] = t[i]
+                used.add(t[i])
 
         res = []
-        for i in range(len(s)):
-            res.append(a[s[i]])
-
+        for i in s:
+            res.append(a[i])
         ans = "".join(res)
+
         return ans == t
 
 
