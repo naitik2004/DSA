@@ -1,16 +1,22 @@
-class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        # max_sum = float('-inf')
-        # curr_sum = 0
-        # for num in nums:
-        #     curr_sum = max(num, curr_sum + num)
-        #     max_sum = max(curr_sum, max_sum)
-        # return max_sum
-
-        cur = 0
-        res = nums[0]
+class Solution(object):
+    def maxSubArray(self, nums):
+        maxSub = nums[0]
+        curSum = 0
         for i in nums:
-            cur = max(cur, 0)
-            cur += i
-            res = max(res, cur)
-        return res
+            if curSum < 0:
+                curSum = 0
+            curSum += i
+            maxSub = max(maxSub, curSum)
+        return maxSub
+
+        # a = 0 
+        # b = -10000
+
+        # for i in nums:
+        #     a = a+i
+        #     if a > b:
+        #         b = a
+        #     if a < 0:
+        #         a = 0
+        # return b
+                
