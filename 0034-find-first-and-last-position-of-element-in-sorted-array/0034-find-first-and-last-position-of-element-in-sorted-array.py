@@ -1,14 +1,28 @@
 class Solution(object):
     def searchRange(self, nums, target):
-        a = -1
-        b = -1
-        for i in range(len(nums)):
-            if nums[i] == target:
-                a = i
-                break
-        
-        for i in range(len(nums)-1,-1,-1):
-            if nums[i] == target:
-                b = i
-                break
-        return ([a,b])
+        l = 0
+        r = len(nums) - 1
+        lst = [-1, -1]
+
+        while l <= r:
+            mid = (l + r) // 2
+            if nums[mid] == target:
+                a = mid 
+                b = mid 
+
+                while a >= 0 and nums[a] == target:
+                    a -= 1
+                lst[0] = a + 1
+
+                while b < len(nums) and nums[b] == target:
+                    b += 1
+                lst[1] = b - 1
+
+                return lst
+
+            elif nums[mid] > target:
+                r = mid - 1
+            else:
+                l = mid + 1
+
+        return lst
