@@ -6,24 +6,37 @@
 #         self.right = right
 class Solution(object):
     def maxDepth(self, root):
-        if root == None:
-            return 0
+        # if root == None:
+        #     return 0
         
-        # ans = []
-        queue = [root]
-        count = 0
+        # # ans = []
+        # queue = [root]
+        # count = 0
 
-        while queue:
-            n = len(queue)
-            # level = []
-            count += 1
-            for _ in range(n):
-                node = queue.pop(0)
-                # ans.append(node.val)
+        # while queue:
+        #     n = len(queue)
+        #     # level = []
+        #     count += 1
+        #     for _ in range(n):
+        #         node = queue.pop(0)
+        #         # ans.append(node.val)
                 
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
-            # ans.append(level)
-        return count
+        #         if node.left:
+        #             queue.append(node.left)
+        #         if node.right:
+        #             queue.append(node.right)
+        #     # ans.append(level)
+        # return count
+        
+
+
+
+
+
+        if not root:
+            return 0
+
+        l = self.maxDepth(root.left)
+        r = self.maxDepth(root.right)
+
+        return (1 + max(l, r))
